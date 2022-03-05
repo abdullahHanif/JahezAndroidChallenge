@@ -3,7 +3,7 @@ ext {
     ssp_android = "1.0.6"
     sdp_android = "1.0.6"
     /*room*/
-    room_version = "2.2.5"
+    room_version = "2.4.0-alpha03"
     glide_version = "4.10.0"
     /*coroutines*/
     coroutines = "1.4.3"
@@ -71,5 +71,4 @@ ext {
 
     paginate_version = "1.0.0"
 
-    stfalcon_version = "1.0.1"
 }
