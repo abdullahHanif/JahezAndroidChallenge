@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import net.jahez.domain.usecase.SortBy
-import net.jahez.jahezchallenge.R
 import net.jahez.jahezchallenge.databinding.FragmentHomeBinding
 import net.jahez.jahezchallenge.home.adapters.RestaurantListingAdapter
 import net.jahez.jahezchallenge.home.vm.HomeActivityViewModel
@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: HomeViewModel by viewModels()
-    private val activityViewModel: HomeActivityViewModel by viewModels()
+    private val activityViewModel: HomeActivityViewModel by activityViewModels<HomeActivityViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,16 +52,17 @@ class HomeFragment : Fragment() {
         viewModel.navigation.observe(viewLifecycleOwner, EventObserver { state ->
             when (state) {
                 HomeViewModelNavigationState.NavigateToSettingsDialog ->{
-                    findNavController().navigate(R.id.settingsBottomSheet)
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsBottomSheet())
                 }
-                else ->{
-
-                }
-
             }
         })
 
+        activityViewModel.shouldRefreshList.observe(viewLifecycleOwner, EventObserver{
+            viewModel.fetchRestaurant(activityViewModel.sorting.value?.peekContent() ?: SortBy.DISTANCE)
+        })
+
         viewModel.restaurants.observe(viewLifecycleOwner, EventObserver {
+            adapter.clear()
             adapter.insertItems(it.list)
         })
 

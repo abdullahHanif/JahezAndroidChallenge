@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/drawable/triangular_shape.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.246875" />
-        <entry key="app/src/main/res/layout/fragment_setting_bottom_sheet.xml" value="0.25919117647058826" />
+        <entry key="app/src/main/res/layout/fragment_setting_bottom_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_restaurant.xml" value="0.45" />
         <entry key="app/src/main/res/xml/navigation.xml" value="0.246875" />

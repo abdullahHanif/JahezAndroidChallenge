@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="net.jahez.domain.usecase.SortBy"/>
+        <import type="net.jahez.jahezchallenge.home.vm.HomeActivityViewModel.Language"/>
+        <import type="net.jahez.jahezchallenge.binding_adapters.ChipGroupBindingAdapter.Companion"/>
         <variable
             name="viewModel"
             type="net.jahez.jahezchallenge.home.vm.HomeActivityViewModel" />
@@ -150,6 +152,7 @@
         </com.google.android.material.chip.ChipGroup>
 
         <Button
+            android:id="@+id/button_apply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_16sdp"

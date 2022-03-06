@@ -1,6 +1,7 @@
 package net.jahez.jahezchallenge.home.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,8 @@ class SplashFragment : Fragment() {
     private fun navigateToHomeFragment() {
         lifecycleScope.launch {
             delay(800)
-            findNavController().navigate(R.id.homeFragment)
+            Log.d("SplashFragment", "actionSplashFragmentToHomeFragment")
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
         }
     }
 

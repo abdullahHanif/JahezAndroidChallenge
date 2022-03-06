@@ -16,7 +16,6 @@ class RestaurantRepositoryImpl @Inject constructor(
     private val remoteDataSource: RestaurantRemoteDataSource
 ) : RestaurantRepository {
 
-    @Throws(Exception::class)
     override suspend fun fetchRestaurants(): Flow<RestaurantUIModel> = flow {
         //fetch it, map it and release it to Domain with flow
         try {
@@ -32,6 +31,7 @@ class RestaurantRepositoryImpl @Inject constructor(
         localSource.getRestaurants().forEach {
             lst.add(RestaurantMapper.fromDataToDomainType(it))
         }
+        Log.d("RestaurantRepository", "RestaurantEntity List" + lst.size)
 
         val response = RestaurantUIModel(lst)
         emit(response)

@@ -1,5 +1,6 @@
 package net.jahez.jahezchallenge.home.vm
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,13 +25,13 @@ class HomeViewModel @Inject constructor(
     private val _navigation = MutableLiveData<Event<HomeViewModelNavigationState>>()
     val navigation: LiveData<Event<HomeViewModelNavigationState>> = _navigation
 
-    var restaurantSorting  : SortBy = SortBy.RATING
-
-
-    fun fetchRestaurant(restaurantSorting : SortBy) {
+    fun fetchRestaurant(restaurantSorting :SortBy ) {
         viewModelScope.launch {
             fetchRestaurantCase.invoke(restaurantSorting).collectLatest { result ->
+                Log.d("HomeViewModel" ,"List Size :: "+result.list.size)
                 _restaurants.value = Event(result)
+            }.runCatching {
+                Log.d("HomeViewModel" ,"List Error")
             }
         }
     }
