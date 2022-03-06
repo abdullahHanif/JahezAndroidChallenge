@@ -71,4 +71,11 @@ ext {
 
     paginate_version = "1.0.0"
 
+    kotlin_version = "1.5.0"
+
+    hilt_version = "2.35.1"
+
+    nav_version = "2.3.5"
+
+    gradle_plugin = "4.2.0"
 }
