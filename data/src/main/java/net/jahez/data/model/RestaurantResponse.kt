@@ -7,13 +7,6 @@ import net.jahez.data.model.typeconverter.TypeConverterz
 import java.io.Serializable
 
 @Entity
-@TypeConverters(TypeConverterz::class)
-data class RestaurantResponse(
-    val list: ArrayList<Restaurant>
-): Serializable
-
-
-@Entity
  data class Restaurant(
     @PrimaryKey
     val id: Int?,

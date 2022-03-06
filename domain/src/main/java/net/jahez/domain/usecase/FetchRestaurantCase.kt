@@ -7,6 +7,11 @@ import javax.inject.Inject
 
 class FetchRestaurantCase @Inject constructor(private val restaurantRepository: RestaurantRepository) {
 
-    suspend operator fun invoke(): Flow<RestaurantUIModel> =
-        restaurantRepository.fetchRestaurants()
+    suspend operator fun invoke(restaurantSorting: SortBy): Flow<RestaurantUIModel> = restaurantRepository.fetchRestaurants()
+}
+
+sealed class SortBy {
+    object DISTANCE : SortBy()
+    object RATING : SortBy()
+    object OFFER : SortBy()
 }

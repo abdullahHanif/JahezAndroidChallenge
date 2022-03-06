@@ -9,7 +9,7 @@ object RestaurantMapper : Mapper<RestaurantEntity, Restaurant> {
     override fun fromDataToDomainType(from: Restaurant): RestaurantEntity =
         RestaurantEntity(
             from.id,
-            from.image,
+            from.description,
             from.distance,
             from.hasOffer,
             from.hours,
@@ -23,7 +23,7 @@ object RestaurantMapper : Mapper<RestaurantEntity, Restaurant> {
     override fun fromDomainToDataType(to: RestaurantEntity): Restaurant =
         Restaurant(
             to.id,
-            to.image,
+            to.description,
             to.distance,
             to.hasOffer,
             to.hours,

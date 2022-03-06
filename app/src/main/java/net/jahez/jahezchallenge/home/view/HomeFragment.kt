@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import net.jahez.domain.entity.RestaurantEntity
+import net.jahez.domain.usecase.SortBy
 import net.jahez.jahezchallenge.databinding.FragmentHomeBinding
 import net.jahez.jahezchallenge.home.adapters.RestaurantListingAdapter
+import net.jahez.jahezchallenge.home.vm.HomeActivityViewModel
 import net.jahez.jahezchallenge.home.vm.HomeViewModel
+import net.jahez.jahezchallenge.utils.EventObserver
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -19,6 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val viewModel: HomeViewModel by viewModels()
+    private val activityViewModel: HomeActivityViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,48 +41,16 @@ class HomeFragment : Fragment() {
 
         setupAdapter()
         initObservers()
+
+        viewModel.fetchRestaurant(SortBy.DISTANCE)
     }
 
     private fun initObservers() {
-        adapter.insertItems(
-            listOf(
-                RestaurantEntity(
-                    17,
-                    "Enjoy fast delivery from Jahez. Order now, or schedule your order any time you want",
-                    4.290354402958331,
-                    true,
-                    "05:00 AM - 04:59 AM",
-                    "https://jahez-other-oniiphi8.s3.eu-central-1.amazonaws.com/17.jpg",
 
-                    "Burger Square",
-                    "9 Ø±ÙŠØ§Ù„",
-                    8.0
-                ), RestaurantEntity(
-                    18,
-                    "Enjoy fast delivery from Jahez. Order now, or schedule your order any time you want",
-                    4.290354402958331,
-                    true,
-                    "05:00 AM - 04:59 AM",
-                    "https://jahez-other-oniiphi8.s3.eu-central-1.amazonaws.com/17.jpg",
+        viewModel.restaurants.observe(viewLifecycleOwner, EventObserver{
+            adapter.insertItems(it.list)
+        })
 
-                    "Burger Square",
-                    "9 Ø±ÙŠØ§Ù„",
-                    8.0
-                ), RestaurantEntity(
-                    19,
-                    "Enjoy fast delivery from Jahez. Order now, or schedule your order any time you want",
-                    4.290354402958331,
-                    true,
-                    "05:00 AM - 04:59 AM",
-                    "https://jahez-other-oniiphi8.s3.eu-central-1.amazonaws.com/17.jpg",
-
-                    "Burger Square",
-                    "9 Ø±ÙŠØ§Ù„",
-                    8.0
-                )
-
-            )
-        )
     }
 
     private fun setupAdapter() {
