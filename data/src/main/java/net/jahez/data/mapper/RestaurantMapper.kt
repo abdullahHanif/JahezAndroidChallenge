@@ -15,7 +15,7 @@ object RestaurantMapper : Mapper<RestaurantEntity, Restaurant> {
             from.hours,
             from.image,
             from.name,
-            from.offer,
+            if(from.offer.equals("9 Ø±ÙŠØ§Ù„",true)) "Amazing offer" else from.offer ,
             from.rating
         )
 
