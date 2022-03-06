@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="model"
+            type="net.jahez.domain.entity.RestaurantEntity" />
+        <import type="android.view.View"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_4sdp"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        android:layout_marginHorizontal="@dimen/unit_2x"
+        android:layout_marginTop="@dimen/unit_2x">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_16sdp">
+
+            <ImageView
+                android:id="@+id/image_background"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@id/guidelineStartOneThird"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/restaurant_item_bg" />
+
+            <ImageView
+                android:background="@drawable/full_rounded_corner_shape"
+                android:id="@+id/image_restaurant"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:clipToOutline="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:image_url="@{model.image}"
+                tools:srcCompat="@drawable/restaurant_item_bg"
+                tools:targetApi="s" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginStart="@dimen/_8sdp"
+                android:id="@+id/text_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_offer"
+                android:text="@{model.name}"
+                tools:text="@string/restaurant_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:id="@+id/text_sub_heading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14ssp"
+                android:text="@{model.description}"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_heading"
+                tools:text="@string/restaurant_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginTop="@dimen/_16sdp"
+                android:id="@+id/text_timing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12ssp"
+                android:drawableStart="@drawable/ic_time"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_4sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_sub_heading"
+                android:text="@{` `+ model.hours}"
+                tools:text=" 06:00 AM - 12:00 PM &amp; 01:00 PM - 01:30 AM" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                android:elevation="@dimen/_10sdp"
+                android:background="@drawable/rounded_corner_shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_background"
+                app:layout_constraintBottom_toTopOf="@id/guidelineStartOneThird"
+               android:drawableStart="@drawable/ic_star"
+                android:paddingStart="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_4sdp"
+                android:paddingVertical="@dimen/_4sdp"
+                android:text="@{model.rating.toString()}"
+                tools:text="4.4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_offer"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:textSize="@dimen/_12ssp"
+                android:textColor="@color/white"
+                android:elevation="@dimen/_10sdp"
+                android:background="@drawable/triangular_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_background"
+                app:layout_constraintBottom_toTopOf="@id/guidelineStartOneThird"
+                android:visibility="@{model.hasOffer ? View.VISIBLE : View.GONE}"
+                android:text="@{model.offer}"
+                android:paddingHorizontal="@dimen/_16sdp"
+                tools:text="Buy one get one free" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStartOneThird"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.66" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
+
+
+

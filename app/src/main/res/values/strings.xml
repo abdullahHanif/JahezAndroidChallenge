@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jahez Challenge</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="no_data_found">No Data Found</string>
 </resources>
