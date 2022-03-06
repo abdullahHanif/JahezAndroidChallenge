@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">تحدي جاهز</string>
+    <string name="settings">الإعدادات</string>
+    <string name="distance">المسافة</string>
+    <string name="offers">عروض</string>
+    <string name="rating">التقييم</string>
+    <string name="sort_restaurants">فرز المطاعم</string>
+    <string name="arabic" transxlatable="false">عربي</string>
+    <string name="english" translatable="false">English</string>
+    <string name="language">لغة التطبيق</string>
+    <string name="apply">موافق</string>
+    <string name="no_data_found">لاتوجد بيانات</string>
+    </resources>

@@ -17,8 +17,6 @@ ext {
     loader_version = "2.1.3"
     /*multi dex version*/
     multidex_version = "1.0.0"
-    /*material version*/
-    material = "1.0.0"
     /*LifeCycle version*/
     life_cycle = "2.2.0"
     /*legacy_support version*/

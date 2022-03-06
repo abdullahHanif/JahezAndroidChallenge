@@ -21,6 +21,9 @@ class HomeViewModel @Inject constructor(
     private val _restaurants = MutableLiveData<Event<RestaurantUIModel>>()
     val restaurants: LiveData<Event<RestaurantUIModel>> get() = _restaurants
 
+    private val _navigation = MutableLiveData<Event<HomeViewModelNavigationState>>()
+    val navigation: LiveData<Event<HomeViewModelNavigationState>> = _navigation
+
     var restaurantSorting  : SortBy = SortBy.RATING
 
 
@@ -31,4 +34,12 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun onMenuOptionsClicked(){
+        _navigation.value = Event(HomeViewModelNavigationState.NavigateToSettingsDialog)
+    }
+}
+
+sealed class HomeViewModelNavigationState {
+    object NavigateToSettingsDialog : HomeViewModelNavigationState()
 }

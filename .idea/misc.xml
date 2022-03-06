@@ -3,13 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/chip_background_color.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/drawable-v24/chip_stroke_color.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/drawable-v24/chip_text_color.xml" value="0.28888888888888886" />
         <entry key="app/src/main/res/drawable-v24/full_rounded_corner_shape.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/ic_time.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/ic_time_24.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/drawable/rounded_corner_shape.xml" value="0.21203703703703702" />
+        <entry key="app/src/main/res/drawable/rounded_corner_top_left_right_bottom_sheet_zero_padding.xml" value="0.28888888888888886" />
         <entry key="app/src/main/res/drawable/triangular_shape.xml" value="0.2630208333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.246875" />
+        <entry key="app/src/main/res/layout/fragment_setting_bottom_sheet.xml" value="0.25919117647058826" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_item_restaurant.xml" value="0.45" />
         <entry key="app/src/main/res/xml/navigation.xml" value="0.246875" />
       </map>

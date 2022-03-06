@@ -14,6 +14,7 @@
         android:theme="@style/Theme.JahezChallenge">
         <activity
             android:name=".home.view.HomeActivity"
+            android:theme="@style/Theme.Jahez.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
