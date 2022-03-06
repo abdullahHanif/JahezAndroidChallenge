@@ -15,6 +15,8 @@ import net.jahez.jahezchallenge.utils.Event
 class SettingBottomSheet : BottomSheetDialogFragment() {
     private val activityViewModel: HomeActivityViewModel by activityViewModels<HomeActivityViewModel>()
 
+    val selectedLanguage = HomeActivityViewModel.Language.ENGLISH
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,11 +31,15 @@ class SettingBottomSheet : BottomSheetDialogFragment() {
         binding.chipGroupLanguage.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.chip_english -> {
-                    activityViewModel.language.value = Event(HomeActivityViewModel.Language.ENGLISH)
+                   if(selectedLanguage != HomeActivityViewModel.Language.ENGLISH){
+                       activityViewModel.changeLanguage(HomeActivityViewModel.Language.ENGLISH)
+                   }
                 }
 
                 R.id.chip_arabic -> {
-                    activityViewModel.language.value = Event(HomeActivityViewModel.Language.ARABIC)
+                    if(selectedLanguage != HomeActivityViewModel.Language.ARABIC){
+                        activityViewModel.changeLanguage(HomeActivityViewModel.Language.ARABIC)
+                    }
                 }
             }
         }
